@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Crew;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -13,7 +14,7 @@ class CrewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() : Response
+    public function index()
     {
         return Inertia::render('Crews/Index', [
             'crews' => Crew::with('user:id,name')->latest()->get(),
@@ -69,7 +70,9 @@ class CrewController extends Controller
      */
     public function show(Crew $crew)
     {
-        //
+        return Inertia::render('Crews/Show', [
+            'crew' => Crew::with('user:id,name')->find($crew->id),
+        ]);
     }
 
     /**
@@ -85,7 +88,36 @@ class CrewController extends Controller
      */
     public function update(Request $request, Crew $crew)
     {
-        //
+        $validated = $request->validate([
+            'ktp' => [
+                'required',
+                Rule::unique('crews')->ignore($crew->id, 'id')
+            ],
+            'name' => 'required|max:255',
+            'role' => 'required|max:255',
+            'birthplace' => 'required|max:255',
+            'birthdate' => 'required|date',
+            'religion' => 'required|max:255',
+            'marital_status' => 'required|max:255',
+            'blood_type' => 'required|max:255',
+            'address' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'emergency_contact' => 'required|max:255',
+            'email' => 'required|max:255',
+            'passport' => 'required|max:255',
+            'seaman_book' => 'required|max:255',
+            'kk' => 'required|max:255',
+            'npwp' => 'required|max:255',
+            'bpjs_tk' => 'required|max:255',
+            'bpjs_kes' => 'required|max:255',
+            'bank' => 'required|max:255',
+            'bank_account_number' => 'required|max:255',
+            'bank_account_owner' => 'required|max:255',
+        ]);
+ 
+        $crew->update($validated);
+ 
+        return redirect()->back();
     }
 
     /**
