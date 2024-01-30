@@ -10,28 +10,8 @@ class Crew extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'ktp',
-        'name',
-        'role',
-        'birthplace',
-        'birthdate',
-        'religion',
-        'marital_status',
-        'blood_type',
-        'address',
-        'phone',
-        'emergency_contact',
-        'email',
-        'passport',
-        'seaman_book',
-        'kk',
-        'npwp',
-        'bpjs_tk',
-        'bpjs_kes',
-        'bank',
-        'bank_account_number',
-        'bank_account_owner',
+    protected $guarded = [
+        
     ];
 
     public function user(): BelongsTo
