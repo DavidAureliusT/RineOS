@@ -17,11 +17,21 @@ class CrewController extends Controller
      */
     public function index()
     {
+        // if(request()->input('search')){
+        //     dd(request()->input('search.name'));
+        // }
         return Inertia::render('Crews/Index', [
             'search' => request()->input('search'),
-            'crews' => Crew::when(request()->input('search'), function ($query, $search) {
-                            $query->where('name', 'like', '%'.$search.'%');
-                        })->with('user:id,name')->latest()->get(),
+            'crews' => Crew::when(request()->input('search.name'), function ($query, $name) {
+                                $query->where('name', 'like', '%'.$name.'%');
+                            })
+                            ->when(request()->input('search.role'), function ($query, $role) {
+                                $query->where('role', 'like', '%'.$role.'%');
+                            })
+                            ->when(request()->input('search.vessel'), function ($query, $vessel) {
+                                $query->where('vessel', 'like', '%'.$vessel.'%');
+                            })
+                            ->with('user:id,name')->latest()->get(),
         ]);
     }
 

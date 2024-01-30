@@ -7,12 +7,28 @@
         </template>
 
         <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-            <div class="mt-6">
+            <div class="mt-6 flex gap-2">
                 <div class="flex items-center relative">
-                    <PhMagnifyingGlass class="absolute left-3"/>
-                    <input v-model="_search"
+                    <PhTextAa class="absolute left-3"/>
+                    <input v-model="_search.name"
                                 type="text"
                                 placeholder="Cari siapa?"
+                                class="border-transparent rounded-full transition-all pl-10"
+                            />
+                </div>
+                <div class="flex items-center relative">
+                    <PhIdentificationBadge class="absolute left-3"/>
+                    <input v-model="_search.role"
+                                type="text"
+                                placeholder="Cari posisi apa?"
+                                class="border-transparent rounded-full transition-all pl-10"
+                            />
+                </div>
+                <div class="flex items-center relative">
+                    <PhAnchor class="absolute left-3"/>
+                    <input v-model="_search.vessel"
+                                type="text"
+                                placeholder="Cari untuk kapal apa?"
                                 class="border-transparent rounded-full transition-all pl-10"
                             />
                 </div>
@@ -34,42 +50,39 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Crew from '@/Components/Crew.vue';
 
-import { PhMagnifyingGlass } from "@phosphor-icons/vue";
+import { PhTextAa, PhAnchor, PhIdentificationBadge } from "@phosphor-icons/vue";
 
 import { Head, router } from '@inertiajs/vue3';
-import { ref, watch } from 'vue';
+import { reactive, watch } from 'vue';
 
 const props = defineProps({
     'crews': Object,
-    'search': String
+    'search': Object,
 })
 
-const _search = ref(props.search)
+const _search = reactive({
+    'name' : props.search?.name,
+    'role' : props.search?.role,
+    'vessel' : props.search?.vessel,
+})
 
 let typingTimer;
 let doneTypingInterval = 1000;
 
 watch(
-    () => [ _search.value ],
+    () => [ _search.name, _search.role, _search.vessel ],
     () => {
         clearTimeout(typingTimer)
         typingTimer = setTimeout(() => {
-            _search.value == "" 
-                ? router.visit('/crews',{
-                    method: 'get',
-                    only: ['crews', 'search'],
-                    preserveState: true,
-                    replace: true,
-                })
-                : router.visit('/crews',{
-                    method: 'get',
-                    data: {
-                        search: _search.value,
-                    },
-                    only: ['crews', 'search'],
-                    preserveState: true,
-                    replace: true,
-                })
+            router.visit('/crews',{
+                method: 'get',
+                data: {
+                    search: _search,
+                },
+                only: ['crews', 'search'],
+                preserveState: true,
+                replace: true,
+            })
             
         },doneTypingInterval)
     })

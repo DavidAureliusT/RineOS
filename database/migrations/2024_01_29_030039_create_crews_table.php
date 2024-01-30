@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("ktp");
             $table->string('name');
             $table->string("role");
+            $table->string("vessel");
             $table->string("birthplace");
             $table->date("birthdate");
             $table->string("religion");

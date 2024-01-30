@@ -19,7 +19,7 @@ defineProps(['crew', 'url']);
                     <PhUser/>
                 </div>
                 <p class="text-lg text-center uppercase text-gray-900">{{ crew.name }}</p>
-                <p class="text-sm text-center text-gray-900">{{ crew.role }}</p>
+                <p class="text-sm text-center text-gray-900">{{ crew.role }} &middot; {{ crew.vessel }}</p>
             </div>
             <!-- <div>
                 <span class="text-gray-800 font-bold">{{ crew.user.name }}</span>
