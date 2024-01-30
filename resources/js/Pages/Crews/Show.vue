@@ -14,24 +14,36 @@
                 <span class="text-gray-800">{{ crew.name }}</span>
             </div>
         </template>
-        <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <div class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-500 mb-4 mt-2">Profile</h3>
+                </div>
+                <div>
+                    <SecondaryButton v-if="!editing" @click="editing = true" class="mb-4 mt-2">Edit</SecondaryButton>
+                    <SecondaryButton v-else @click="editing = false" class="mb-4 mt-2">Cancel</SecondaryButton>
+                </div>
+            </div>
+            <hr>
             <div class="mt-6">
                 <form @submit.prevent="form.put(route('crews.update', crew.id), { onSuccess: () => editing = false })">
                     <div class="pb-1 grid grid-cols-1 gap-3">
                         <div v-for="[key, value] of Object.entries(crew_schema)">
                             <div class="mb-2 flex flex-row gap-1">
-                                <label class="w-48">{{ key }}</label>
+                                <label class="w-48 py-2">{{ key }}</label>
                                 <div class="flex-1 flex flex-col">
-                                    <input type="text" v-model="form[key]" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" :disabled="!editing">
+                                    <input type="text" v-model="form[key]" :class="[
+                                        'block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm',
+                                        editing == false ? 'bg-transparent border-transparent shadow-transparent' : ''
+                                        ]" :disabled="!editing">
                                     <InputError :message="form.errors[key]" class="mt-2" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <PrimaryButton v-if="!editing" @click="editing = true" class="mt-4">Edit</PrimaryButton>
-                    <div v-else class="flex gap-2">
-                        <SecondaryButton @click="editing = false; form.reset(); form.clearErrors()" class="mt-4">Cancel</SecondaryButton>
+                    <div v-if="editing" class="flex flex-row-reverse gap-2">
                         <PrimaryButton class="mt-4">Save</PrimaryButton>
+                        <SecondaryButton @click="editing = false; form.reset(); form.clearErrors()" class="mt-4">Cancel</SecondaryButton>
                     </div>
                 </form>
             </div>

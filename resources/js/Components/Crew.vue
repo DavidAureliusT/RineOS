@@ -13,22 +13,19 @@ defineProps(['crew', 'url']);
  
 <template>
     <Link :href="url">
-        <div class="p-6 flex space-x-2 bg-white shadow-sm rounded-lg transition-all border-b-2 border-transparent hover:border-indigo-400 duration-150 ease-in-out">
-            <div class="h-6 w-6 text-gray-600">
-                <PhUser/>
-            </div>
-            <div class="flex-1">
-                <div>
-                    <p class="text-lg uppercase text-gray-900">{{ crew.name }}</p>
-                    <p class="text-md font-bold text-gray-900">{{ crew.role }}</p>
+        <div class="p-6 bg-white shadow-sm rounded-lg transition-all border-2 border-transparent hover:border-indigo-400 duration-150 ease-in-out">
+            <div class="flex flex-col items-center">
+                <div class="p-3 border rounded-full">
+                    <PhUser/>
                 </div>
-                <div class="flex justify-between items-center mt-2">
-                    <div>
-                        <span class="text-gray-800 font-bold">{{ crew.user.name }}</span>
-                        <small class="ml-2 text-sm text-gray-600">{{ dayjs(crew.created_at).fromNow() }}</small>
-                    </div>
-                </div>
+                <p class="text-lg text-center uppercase text-gray-900">{{ crew.name }}</p>
+                <p class="text-sm text-center text-gray-900">{{ crew.role }}</p>
             </div>
+            <!-- <div>
+                <span class="text-gray-800 font-bold">{{ crew.user.name }}</span>
+                <small v-if="crew.updated_at == null" class="ml-2 text-sm text-gray-600">{{ dayjs(crew.created_at).fromNow() }}</small>
+                <small v-else class="ml-2 text-sm text-gray-600"> {{ dayjs(crew.updated_at).fromNow() }} &middot; edited</small>
+            </div> -->
         </div>
     </Link>
 </template>

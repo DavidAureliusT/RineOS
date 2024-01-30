@@ -9,6 +9,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 
 
+
 class CrewController extends Controller
 {
     /**
@@ -17,7 +18,10 @@ class CrewController extends Controller
     public function index()
     {
         return Inertia::render('Crews/Index', [
-            'crews' => Crew::with('user:id,name')->latest()->get(),
+            'search' => request()->input('search'),
+            'crews' => Crew::when(request()->input('search'), function ($query, $search) {
+                            $query->where('name', 'like', '%'.$search.'%');
+                        })->with('user:id,name')->latest()->get(),
         ]);
     }
 

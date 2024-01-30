@@ -36,7 +36,8 @@ class CrewSeeder extends Seeder
                 "bank" => "Mandiri",
                 "bank_account_number" => "128-00-0539424-9",
                 "bank_account_owner" => "Toni Kosoyo",
-                'user_id' => 1
+                'user_id' => 1,
+                'created_at' => now()
             ],
             [
                 "ktp" => "3275062101730011",
@@ -60,7 +61,8 @@ class CrewSeeder extends Seeder
                 "bank" => "Mandiri",
                 "bank_account_number" => "121-00-0799685-7",
                 "bank_account_owner" => "Hendra Masdar",
-                'user_id' => 1
+                'user_id' => 1,
+                'created_at' => now()
             ],
             [
                 "ktp" => "3208141708750004",
@@ -84,7 +86,8 @@ class CrewSeeder extends Seeder
                 "bank" => "Mandiri",
                 "bank_account_number" => "134-00-0996304-1",
                 "bank_account_owner" => "Agus Sukmawan",
-                'user_id' => 1
+                'user_id' => 1,
+                'created_at' => now()
             ],
             [
                 "ktp" => "7326020905840001",
@@ -108,7 +111,8 @@ class CrewSeeder extends Seeder
                 "bank" => "Mandiri",
                 "bank_account_number" => "170-00-0477847-2",
                 "bank_account_owner" => "Berti Lisu",
-                'user_id' => 1
+                'user_id' => 1,
+                'created_at' => now()
             ],
         ]);
     }
