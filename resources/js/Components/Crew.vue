@@ -18,14 +18,11 @@ defineProps(['crew', 'url']);
                 <div class="p-3 border rounded-full">
                     <PhUser/>
                 </div>
-                <p class="text-lg text-center uppercase text-gray-900">{{ crew.name }}</p>
-                <p class="text-sm text-center text-gray-900">{{ crew.role }} &middot; {{ crew.vessel }}</p>
+                <div class="mt-3">
+                    <p class="text-lg text-center uppercase text-gray-900">{{ crew.name }}</p>
+                    <p class="text-sm text-center text-gray-900">{{ crew.role }} &middot; {{ crew.vessel }}</p>
+                </div>
             </div>
-            <!-- <div>
-                <span class="text-gray-800 font-bold">{{ crew.user.name }}</span>
-                <small v-if="crew.updated_at == null" class="ml-2 text-sm text-gray-600">{{ dayjs(crew.created_at).fromNow() }}</small>
-                <small v-else class="ml-2 text-sm text-gray-600"> {{ dayjs(crew.updated_at).fromNow() }} &middot; edited</small>
-            </div> -->
         </div>
     </Link>
 </template>

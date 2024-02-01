@@ -3,11 +3,11 @@
     
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="py-6 font-semibold text-xl text-gray-800 leading-tight inline-flex items-center">Crew Database</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-flex items-center">Crew Database</h2>
         </template>
 
         <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-            <div class="mt-6 flex gap-2">
+            <div class="flex gap-2">
                 <div class="flex items-center relative">
                     <PhTextAa class="absolute left-3"/>
                     <input v-model="_search.name"

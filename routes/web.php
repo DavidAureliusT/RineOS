@@ -34,6 +34,15 @@ Route::resource('crews', CrewController::class)
     ->only(['index', 'create', 'store', 'show', 'update'])
     ->middleware(['auth', 'verified']);
 
+Route::controller(CrewController::class)->group(function () {
+    Route::post('crews/{crew}/documents', 'store_document');
+    Route::put('crews/{crew}/documents/{document}', 'update_document');
+    Route::delete('crews/{crew}/documents/{document}', 'destroy_document');
+});
+
+// Route::resource('crews/{crew}');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
