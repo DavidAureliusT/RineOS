@@ -41,14 +41,6 @@ Route::controller(DocumentController::class)->group( function () {
     Route::delete('documents/{document}', 'destroy')->name('documents.destroy');
 });
 
-// Route::group(
-//     [ 'prefix' => 'crews/{crew}/' ], 
-//     function () {
-//         Route::resource('documents', DocumentController::class)
-//             ->only(['create', 'store', 'show', 'update', 'destroy'])
-//             ->middleware(['auth', 'verified']);
-// });
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
