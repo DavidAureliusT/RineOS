@@ -36,6 +36,7 @@ const crew_schema = {
     ktp: '',
     name: '',
     role: '',
+    vessel: '',
     birthplace: '',
     birthdate: '',
     religion: '',

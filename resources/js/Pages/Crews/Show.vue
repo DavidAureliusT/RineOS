@@ -170,6 +170,7 @@ const crew_schema = {
     ktp: props.crew.ktp ?? '',
     name: props.crew.name ?? '',
     role: props.crew.role ?? '',
+    vessel: props.crew.vessel ?? '',
     birthplace: props.crew.birthplace ?? '',
     birthdate: props.crew.birthdate ?? '',
     religion: props.crew.religion ?? '',

@@ -53,8 +53,9 @@ class CrewController extends Controller
         $validated = $request->validate([
             'ktp' => 'required|unique:crews|max:255',
             'name' => 'required|max:255',
-            'role' => 'required|max:255',
             'birthplace' => 'required|max:255',
+            'role' => 'required|max:255',
+            'vessel' => 'required|max:255',
             'birthdate' => 'required|date',
             'religion' => 'required|max:255',
             'marital_status' => 'required|max:255',
@@ -109,6 +110,7 @@ class CrewController extends Controller
             ],
             'name' => 'required|max:255',
             'role' => 'required|max:255',
+            'vessel' => 'required|max:255',
             'birthplace' => 'required|max:255',
             'birthdate' => 'required|date',
             'religion' => 'required|max:255',
