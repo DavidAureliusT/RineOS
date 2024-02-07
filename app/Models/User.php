@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Crew::class);
     }
+
+    public function document(): HasMany
+    {
+        return $this->hasMany(Crew::class);
+    }
 }

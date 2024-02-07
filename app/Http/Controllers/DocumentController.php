@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crew;
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
@@ -26,9 +29,28 @@ class DocumentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $crew)
     {
-        //
+        $this->validate($request, [
+			'file' => 'required',
+			'name' => 'required',
+		]);
+ 
+		$file = $request->file('file');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time().'.'.$extension;
+
+        $path = 'uploads/documents/';
+        $file->move($path, $filename);
+
+        Crew::find($crew)->documents()->create([
+            'user_id' => $request->user()->id,
+            'url' => $path.$filename,
+            'name' => $request->input('name'),
+            'reminder' => $request->input('reminder'),
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -52,7 +74,16 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        //
+        $this->validate($request, [
+			'name' => 'required',
+		]);
+
+        $document->update([
+            'name' => $request->input('name'),
+            'reminder' => $request->input('reminder'),
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -60,6 +91,14 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        // $this->authorize('delete', $document);
+
+        $document->delete();
+
+        if(File::exists($document->url)) {
+            File::delete($document->url);
+        }
+
+        return redirect()->back();
     }
 }

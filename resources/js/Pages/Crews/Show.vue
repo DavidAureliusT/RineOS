@@ -31,40 +31,76 @@
                                 </div>
                                 <div>
                                     <Dialog 
-                                    trigger-button-label="Upload" 
-                                    dialog-title="Upload Document"
-                                    dialog-description="Upload documents and set reminders to update. Click save when you're done."
+                                        dialog-title="Upload Document"
+                                        dialog-description="Upload documents and set reminders to update. Click save when you're done."
                                     >
-                                        <fieldset class="mb-[15px] flex items-center gap-5">
-                                            <label class="text-grass11 w-[90px] text-right text-[15px]" for="label">Label</label>
-                                            <input
-                                                id="label"
-                                                class="text-grass11 shadow-green7 focus:shadow-green8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
-                                                defaultValue="Curriculum vitae"
-                                            >
-                                        </fieldset>
-                                        <fieldset class="mb-[15px] flex items-center gap-5">
-                                            <label class="text-grass11 w-[90px] text-right text-[15px]" for="fileDocument">File</label>
-                                            <input
-                                                id="fileDocument"
-                                                type="file"
-                                                class="text-grass11 shadow-green7 focus:shadow-green8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
-                                            >
-                                        </fieldset>
-                                        <fieldset class="mb-[15px] flex items-center gap-5">
-                                            <label class="text-grass11 w-[90px] text-right text-[15px]" for="reminder">Reminder</label>
-                                            <input
-                                                id="reminder"
-                                                type="date"
-                                                class="text-grass11 shadow-green7 focus:shadow-green8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
-                                            >
-                                        </fieldset>
+                                        <template #trigger-button>
+                                            <PrimaryButton class="mb-4">Upload</PrimaryButton>
+                                        </template>
+                                        <form @submit.prevent="upload_document" >
+                                            <fieldset class="mb-[15px] flex items-center gap-5">
+                                                <label class="w-[90px] text-right text-[15px]" for="file">File</label>
+                                                <input 
+                                                    @input="document_form.file = $event.target.files[0]"
+                                                    type="file" 
+                                                    id="file"
+                                                    class="inline-flex  w-full flex-1 leading-none outline-none"
+                                                >
+                                                <InputError :message="document_form.errors['file']" class="mt-2" />
+                                            </fieldset>
+                                            <fieldset class="mb-[15px] flex items-center gap-5">
+                                                <label class="w-[90px] text-right text-[15px]" for="name">Name</label>
+                                                <input
+                                                    v-model="document_form.name"
+                                                    id="name"
+                                                    class="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] leading-none outline-none"
+                                                    placeholder="ex: Curriculum vitae"
+                                                >
+                                                <InputError :message="document_form.errors['name']" class="mt-2" />
+                                            </fieldset>
+                                            <fieldset class="mb-[15px] flex items-center gap-5">
+                                                <label class="w-[90px] text-right text-[15px]" for="reminder">Reminders</label>
+                                                <input
+                                                    v-model="document_form.reminder"
+                                                    id="reminder"
+                                                    class="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] leading-none outline-none"
+                                                    type="date"
+                                                >
+                                                <InputError :message="document_form.errors['reminder']" class="mt-2" />
+                                            </fieldset>
+                                            <div class="mt-[25px] flex justify-end">
+                                                <PrimaryButton type="submit">Upload</PrimaryButton>
+                                            </div>
+                                            <progress v-if="document_form.progress" :value="document_form.progress.percentage" max="100">
+                                                {{ document_form.progress.percentage }}%
+                                            </progress>
+                                        </form>
                                     </Dialog>
                                 </div>
                             </div>
                             <hr>
                             <div class="mt-6">
-                                <p class="text-gray-500 animate-pulse">No document exist.</p>
+                                <div v-if="crew.documents != null">
+                                    <div class="flex items-center text-black/50 font-bold h-[35px]">
+                                        <div class="flex-none w-8"></div>
+                                        <div class="flex-1">
+                                            Name
+                                        </div>
+                                        <div class="flex-none w-32">
+                                            Reminder
+                                        </div>
+                                        <div class="flex-none w-56 text-right">
+                                            Actions
+                                        </div>
+                                    </div>
+                                    <Document v-for="(item, index) in crew.documents" :key="index" 
+                                        :id="item.id"
+                                        :url="item.url"
+                                        :name="item.name"
+                                        :reminder="item.reminder"
+                                    />
+                                </div>
+                                <p v-else class="text-gray-500 animate-pulse">No document exist.</p>
                             </div>
                         </div>
                         <!-- Profile -->
@@ -119,6 +155,12 @@ import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import Dialog from '@/Components/Dialog.vue';
+import Document from '@/Components/Document.vue';
+
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+dayjs.extend(relativeTime);
 
 const props = defineProps({
     'crew': Object
@@ -149,6 +191,18 @@ const crew_schema = {
 }
 
 const form = useForm(crew_schema);
+
+const document_form = useForm({
+    name: null,
+    reminder: null,
+    file: null,
+});
+
+function upload_document() {
+    document_form.post('/crews/'+props.crew.id+'/documents', {
+        forceFormData: true
+    })
+}
 
 const editing = ref(false);
 

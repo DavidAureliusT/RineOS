@@ -85,7 +85,7 @@ class CrewController extends Controller
     public function show(Crew $crew)
     {
         return Inertia::render('Crews/Show', [
-            'crew' => Crew::with('user:id,name')->find($crew->id),
+            'crew' => Crew::with(['user:id,name', 'documents'])->find($crew->id),
         ]);
     }
 
