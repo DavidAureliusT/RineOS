@@ -13,7 +13,7 @@
                     <input v-model="_search.name"
                                 type="text"
                                 placeholder="Cari siapa?"
-                                class="border-transparent rounded-full transition-all pl-10"
+                                class="border-slate-300 transition-all pl-10"
                             />
                 </div>
                 <div class="flex items-center relative">
@@ -21,7 +21,7 @@
                     <input v-model="_search.role"
                                 type="text"
                                 placeholder="Cari posisi apa?"
-                                class="border-transparent rounded-full transition-all pl-10"
+                                class="border-slate-300 transition-all pl-10"
                             />
                 </div>
                 <div class="flex items-center relative">
@@ -29,17 +29,42 @@
                     <input v-model="_search.vessel"
                                 type="text"
                                 placeholder="Cari untuk kapal apa?"
-                                class="border-transparent rounded-full transition-all pl-10"
+                                class="border-slate-300 transition-all pl-10"
                             />
                 </div>
             </div>
-            <div class="mt-6 grid grid-cols-4 gap-2">
-                <Crew
-                    v-for="crew in crews"
-                    :key="crew.id"
-                    :crew="crew"
-                    :url="route('crews.show', crew.id)"
-                />
+            <div class="mt-6 overflow-auto">
+                <table class="table-auto border border-collapse border-slate-400">
+                    <thead class="bg-gray-200 text-black/50">
+                        <tr>
+                            <th v-for="[key, value] of Object.entries(crews[0])" :key="index"
+                            class="px-3 py-1 border border-slate-300"
+                            >
+                                {{ key }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr v-for="crew in crews" :key="crew.id"
+                            class="hover:bg-slate-300/20 transition-all"
+                            @click="router.visit(route('crews.show', crew.id))"
+                            >
+                                <td v-for="[key, value] of Object.entries(crew)" :key="index"
+                                class="px-3 py-1 border border-slate-300"
+                                >
+                                    {{ value }}
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+                <!-- <div class="mt-6 grid grid-cols-4 gap-2">
+                    <Crew
+                        v-for="crew in crews"
+                        :key="crew.id"
+                        :crew="crew"
+                        :url="route('crews.show', crew.id)"
+                    />
+                </div> -->
             </div>
         </div>
 
