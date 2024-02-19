@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="mt-6 overflow-auto">
-                <table class="table-auto border border-collapse border-slate-400">
+                <!-- <table class="table-auto border border-collapse border-slate-400">
                     <thead class="bg-gray-200 text-black/50">
                         <tr>
                             <th v-for="[key, value] of Object.entries(crews[0])" :key="index"
@@ -56,15 +56,15 @@
                                 </td>
                             </tr>
                     </tbody>
-                </table>
-                <!-- <div class="mt-6 grid grid-cols-4 gap-2">
+                </table> -->
+                <div class="mt-6 grid grid-cols-4 gap-2">
                     <Crew
                         v-for="crew in crews"
                         :key="crew.id"
                         :crew="crew"
                         :url="route('crews.show', crew.id)"
                     />
-                </div> -->
+                </div>
             </div>
         </div>
 
