@@ -15,6 +15,19 @@ export default {
             fontFamily: {
                 sans: ['Public Sans','Figtree', ...defaultTheme.fontFamily.sans],
             },
+            screens: {
+                sm: '480px',
+                md: '768px',
+                lg: '976px',
+                xl: '1300px',
+              },
+            colors: {
+                'primary'   : '#FF0000',
+                'danger'    : '#7B1010',
+                'warning'   : '#FFDB0C',
+                'success'   : '#3CE037',
+                'white'     : '#F0F0F0',
+              },
         },
     },
 
