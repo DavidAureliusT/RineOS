@@ -7,29 +7,29 @@
         </template>
 
         <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-            <div class="flex gap-2">
-                <div class="flex items-center relative">
+            <div class="flex gap-2 flex-wrap">
+                <div class="flex-grow flex items-center relative">
                     <PhTextAa class="absolute left-3"/>
-                    <input v-model="_search.name"
+                    <TextInput v-model="_search.name"
                                 type="text"
                                 placeholder="Cari siapa?"
-                                class="border-slate-300 transition-all pl-10"
+                                class="border-slate-300 transition-all pl-10 w-full bg-white text-black"
                             />
                 </div>
-                <div class="flex items-center relative">
+                <div class="flex-grow flex items-center relative">
                     <PhIdentificationBadge class="absolute left-3"/>
-                    <input v-model="_search.role"
+                    <TextInput v-model="_search.role"
                                 type="text"
                                 placeholder="Cari posisi apa?"
-                                class="border-slate-300 transition-all pl-10"
+                                class="border-slate-300 transition-all pl-10 w-full bg-white text-black"
                             />
                 </div>
-                <div class="flex items-center relative">
+                <div class="flex-grow flex items-center relative">
                     <PhAnchor class="absolute left-3"/>
-                    <input v-model="_search.vessel"
+                    <TextInput v-model="_search.vessel"
                                 type="text"
                                 placeholder="Cari untuk kapal apa?"
-                                class="border-slate-300 transition-all pl-10"
+                                class="border-slate-300 transition-all pl-10 w-full bg-white text-black"
                             />
                 </div>
             </div>
@@ -57,7 +57,7 @@
                             </tr>
                     </tbody>
                 </table> -->
-                <div class="mt-6 grid grid-cols-4 gap-2">
+                <div class="mt-4 grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
                     <Crew
                         v-for="crew in crews"
                         :key="crew.id"
@@ -73,6 +73,7 @@
 
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import TextInput from '@/Components/TextInput.vue'
 import Crew from '@/Components/Crew.vue';
 
 import { PhTextAa, PhAnchor, PhIdentificationBadge } from "@phosphor-icons/vue";

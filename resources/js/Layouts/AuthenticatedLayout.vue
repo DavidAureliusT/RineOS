@@ -36,7 +36,7 @@ const showingNavigationDropdown = ref(false);
                                     Create
                                 </NavLink> -->
                                 <NavLink :href="route('crews.index')" :active="route().current('crews.index')">
-                                    Index
+                                    Crew Database
                                 </NavLink>
                             </div>
                         </div>
@@ -49,7 +49,7 @@ const showingNavigationDropdown = ref(false);
                                         <span class="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-100 bg-black focus:outline-none transition ease-in-out duration-150"
+                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-100 focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {{ $page.props.auth.user.name }}
 

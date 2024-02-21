@@ -13,14 +13,18 @@ defineProps(['crew', 'url']);
  
 <template>
     <Link :href="url">
-        <div class="p-6 bg-white shadow-sm rounded-lg transition-all border-2 border-transparent hover:border-indigo-400 duration-150 ease-in-out">
-            <div class="flex flex-col items-center">
-                <div class="p-3 border rounded-full">
-                    <PhUser/>
-                </div>
-                <div class="mt-3">
-                    <p class="text-lg text-center uppercase text-gray-900">{{ crew.name }}</p>
-                    <p class="text-sm text-center text-gray-900">{{ crew.role }} &middot; {{ crew.vessel }}</p>
+        <div class="h-56 bg-white text-night shadow-sm transition-all border border-gray-300 
+         hover:border-accent hover:shadow-xl
+         duration-150 ease-in-out">
+            <div class="grid place-items-center h-full">
+                <div class="flex flex-col items-center">
+                    <div class="p-3 border-2 rounded-full">
+                        <PhUser size="30"/>
+                    </div>
+                    <div class="mt-3 w-52">
+                        <p class="text-lg text-center uppercase truncate">{{ crew.name }}</p>
+                        <p class="text-sm text-center">{{ crew.role }} &middot; {{ crew.vessel }}</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -22,11 +22,11 @@ export default {
                 xl: '1300px',
               },
             colors: {
-                'primary'   : '#FF0000',
+                'accent'   : '#FF0000',
                 'danger'    : '#7B1010',
                 'warning'   : '#FFDB0C',
                 'success'   : '#3CE037',
-                'white'     : '#F0F0F0',
+                'primary'     : '#F0F0F0',
                 'night'     : '#111827'
               },
         },
