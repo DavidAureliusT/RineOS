@@ -27,6 +27,7 @@ export default {
                 'warning'   : '#FFDB0C',
                 'success'   : '#3CE037',
                 'white'     : '#F0F0F0',
+                'night'     : '#111827'
               },
         },
     },
