@@ -45,17 +45,17 @@ defineProps({
 
         <div class="xl:max-w-6xl lg:max-w-4xl md:max-w-md sm:max-w-md
             w-full">
-            <div class="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-2">
+            <div class="grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-8">
                 
                 <div 
-                @click="router.visit(route('login'))"
-                class="col-span-1 rounded-lg border h-96 flex justify-center items-center hover:bg-primary transition-all">
+                @click="router.visit(route('crews.index'))"
+                class="col-span-1 rounded-lg border-2 h-96 flex justify-center items-center hover:bg-primary/70 hover:border-transparent hover:rounded-3xl transition-all">
                     <div class="flex flex-col items-center text-white">
-                        <PhPerson weight="thin" size="50" class=""/>
-                        <p class="">Crew Management</p>
+                        <PhPerson weight="thin" size="50" class="mb-4"/>
+                        <p class="font-semibold">Crew Management</p>
                     </div>
                 </div>
-                <div class="col-span-1 rounded-lg border border-zinc-500 border-dashed h-96 flex justify-center items-center">
+                <div class="col-span-1 rounded-lg border-2 border-zinc-500 border-dashed h-96 flex justify-center items-center">
                     <p class="text-white/70">Coming Soon</p>
                 </div>
             </div>
