@@ -49,13 +49,13 @@ defineProps({
                 
                 <div 
                 @click="router.visit(route('login'))"
-                class="col-span-1 rounded-lg border h-32 flex justify-center items-center hover:bg-primary transition-all">
+                class="col-span-1 rounded-lg border h-96 flex justify-center items-center hover:bg-primary transition-all">
                     <div class="flex flex-col items-center text-white">
                         <PhPerson weight="thin" size="50" class=""/>
                         <p class="">Crew Management</p>
                     </div>
                 </div>
-                <div class="col-span-1 rounded-lg border border-zinc-500 border-dashed h-32 flex justify-center items-center">
+                <div class="col-span-1 rounded-lg border border-zinc-500 border-dashed h-96 flex justify-center items-center">
                     <p class="text-white/70">Coming Soon</p>
                 </div>
             </div>
