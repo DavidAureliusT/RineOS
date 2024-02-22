@@ -3,22 +3,28 @@
     
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-flex items-center">New Crew</h2>
+            <h2 class="font-semibold text-md text-gray-800 leading-tight inline-flex items-center">Create Crew</h2>
         </template>
 
         <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
             <form @submit.prevent="form.post(route('crews.store'), { onSuccess: () => form.reset() })">
-                <div class="pb-1 grid grid-cols-1 gap-3">
-                    <div v-for="[key, value] of Object.entries(crew_schema)">
-                        <div class="mb-2 flex flex-row gap-1">
-                            <label class="w-48">{{ key }}</label>
-                            <div class="flex-1 flex flex-col">
-                                <input type="text" v-model="form[key]" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                                <InputError :message="form.errors[key]" class="mt-2" />
-                            </div>
-                        </div>
+                <div class="flex flex-wrap gap-4">
+                    <div v-for="[key, _] of Object.entries(crew_schema)" class="flex-grow basis-1/5">
+                        <InputLabel :for="key" :value="key" class="text-black" />
+    
+                        <TextInput
+                            :id="key"
+                            type="text"
+                            class="mt-1 block w-full text-black"
+                            v-model="form[key]"
+                            required
+                            autofocus
+                        />
+    
+                        <InputError class="mt-2" :message="form.errors[key]" />
                     </div>
                 </div>
+                
                 <PrimaryButton class="mt-4">Save</PrimaryButton>
             </form>
         </div>
@@ -30,6 +36,9 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import TextInput from '@/Components/TextInput.vue';
+
 import { useForm, Head } from '@inertiajs/vue3';
 
 const crew_schema = {

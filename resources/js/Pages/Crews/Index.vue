@@ -3,10 +3,10 @@
     
     <AuthenticatedLayout>
         <template #header>
-            <div class="flex justify-between">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-flex items-center uppercase tracking-widest">Crews</h2>
+            <div class="flex justify-between w-full">
+                <h2 class="font-semibold text-md text-gray-800 leading-tight inline-flex items-center">Crews</h2>
                 
-                <PrimaryButton>Create</PrimaryButton>
+                <PrimaryButton @click="router.visit(route('crews.create'))">Create</PrimaryButton>
             </div>
         </template>
 
@@ -37,30 +37,7 @@
                             />
                 </div>
             </div>
-            <div class="mt-6 overflow-auto">
-                <!-- <table class="table-auto border border-collapse border-slate-400">
-                    <thead class="bg-gray-200 text-black/50">
-                        <tr>
-                            <th v-for="[key, value] of Object.entries(crews[0])" :key="index"
-                            class="px-3 py-1 border border-slate-300"
-                            >
-                                {{ key }}
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                        <tr v-for="crew in crews" :key="crew.id"
-                            class="hover:bg-slate-300/20 transition-all"
-                            @click="router.visit(route('crews.show', crew.id))"
-                            >
-                                <td v-for="[key, value] of Object.entries(crew)" :key="index"
-                                class="px-3 py-1 border border-slate-300"
-                                >
-                                    {{ value }}
-                                </td>
-                            </tr>
-                    </tbody>
-                </table> -->
+            <div class="overflow-auto">
                 <div class="mt-4 grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
                     <Crew
                         v-for="crew in crews"
