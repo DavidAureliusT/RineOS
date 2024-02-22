@@ -1,9 +1,13 @@
 <template>
-    <Head title="Crew Database" />
+    <Head title="Crews" />
     
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-flex items-center">Crew Database</h2>
+            <div class="flex justify-between">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-flex items-center uppercase tracking-widest">Crews</h2>
+                
+                <PrimaryButton>Create</PrimaryButton>
+            </div>
         </template>
 
         <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
@@ -74,6 +78,8 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import TextInput from '@/Components/TextInput.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+
 import Crew from '@/Components/Crew.vue';
 
 import { PhTextAa, PhAnchor, PhIdentificationBadge } from "@phosphor-icons/vue";

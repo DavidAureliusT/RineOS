@@ -1,13 +1,13 @@
 <template>
-    <Head title="Crew Database" />
+    <Head title="Crews" />
     
     <AuthenticatedLayout>
         <template #header>
             <div class="flex place-items-center gap-5">
                 <Link :href="route('crews.index')">
                     <h2 class="
-                    font-semibold text-xl text-gray-500 leading-tight inline-flex items-center hover:text-gray-800 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out 
-                    ">Crew Database</h2>
+                    font-semibold text-xl text-gray-500 leading-tight inline-flex items-center hover:text-gray-800 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out uppercase tracking-widest
+                    ">Crews</h2>
                 </Link>
                 <PhCaretRight/> 
                 <span class="text-gray-800">{{ crew.name }}</span>
