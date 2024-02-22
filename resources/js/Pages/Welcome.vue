@@ -76,7 +76,10 @@ defineProps({
             text-sm text-gray-500 dark:text-gray-400
             ">
                 <p class="px-3">RineOS@Eka Nusantara Line</p>
-                <p class="px-3">by davidaurelius</p>
+                <a href="https://www.linkedin.com/in/davidaurelius/">
+                    <p class="px-3">by <span class="hover:underline">davidaurelius</span></p>
+                </a>
+                
             </div>
         </div>
     </div>
