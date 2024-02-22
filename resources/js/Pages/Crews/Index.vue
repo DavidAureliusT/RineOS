@@ -6,7 +6,10 @@
             <div class="flex justify-between w-full">
                 <h2 class="font-semibold text-md text-gray-800 leading-tight inline-flex items-center">Crews</h2>
                 
-                <PrimaryButton @click="router.visit(route('crews.create'))">Create</PrimaryButton>
+                <div class="flex gap-2">
+                    <PrimaryButton @click="router.visit(route('crews.create'))"><PhPlus weight="bold" size="16" class="mr-2"/>Create</PrimaryButton>
+                    <PrimaryButton color="night" @click="router.visit(route('crews.create'))"><PhMicrosoftExcelLogo weight="bold" size="16" class="mr-2"/>Excel</PrimaryButton>
+                </div>
             </div>
         </template>
 
@@ -59,7 +62,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 import Crew from '@/Components/Crew.vue';
 
-import { PhTextAa, PhAnchor, PhIdentificationBadge } from "@phosphor-icons/vue";
+import { PhTextAa, PhAnchor, PhIdentificationBadge, PhMicrosoftExcelLogo, PhPlus } from "@phosphor-icons/vue";
 
 import { Head, router } from '@inertiajs/vue3';
 import { reactive, watch } from 'vue';
