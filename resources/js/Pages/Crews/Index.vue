@@ -6,9 +6,33 @@
             <div class="flex justify-between w-full">
                 <h2 class="font-semibold text-md text-gray-800 leading-tight inline-flex items-center">Crews</h2>
                 
+                
                 <div class="flex gap-2">
                     <PrimaryButton @click="router.visit(route('crews.create'))"><PhPlus weight="bold" size="16" class="mr-2"/>Create</PrimaryButton>
-                    <PrimaryButton color="green" @click="router.visit(route('crews.create'))"><PhMicrosoftExcelLogo weight="bold" size="16" class="mr-2"/>Excel</PrimaryButton>
+                    
+                    <div>
+                        <Dialog 
+                            dialog-title="Excel"
+                            dialog-description="Insert crew data using excel file."
+                        >
+                            <template #trigger-button>
+                                <PrimaryButton color="green"><PhMicrosoftExcelLogo weight="bold" size="16" class="mr-2"/>Excel</PrimaryButton>
+                            </template>
+                            
+                            <div class="flex divide-x-2 text-center my-8 mb-3">
+                                <div class="flex-grow basis-1">
+                                    <SecondaryButton >
+                                        Download Template
+                                    </SecondaryButton>
+                                </div>
+                                <div class="flex-grow basis-1">
+                                    <PrimaryButton color="green">
+                                        Upload File
+                                    </PrimaryButton>
+                                </div>
+                            </div>
+                        </Dialog>
+                    </div>
                 </div>
             </div>
         </template>
@@ -59,6 +83,8 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import TextInput from '@/Components/TextInput.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
+import Dialog from '@/Components/Dialog.vue';
 
 import Crew from '@/Components/Crew.vue';
 

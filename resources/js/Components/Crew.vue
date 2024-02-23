@@ -13,7 +13,7 @@ defineProps(['crew', 'url']);
  
 <template>
     <Link :href="url">
-        <div class="h-64 border border-transparent rounded-lg bg-white text-night shadow-sm shadow-black/80 transition-all
+        <div class="h-64 rounded-lg bg-white text-night border border-black/20 shadow-md shadow-black/30 transition-all
          hover:shadow-inner hover:shadow-black/80
          relative
          ">
