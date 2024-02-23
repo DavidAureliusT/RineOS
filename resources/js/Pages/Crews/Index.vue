@@ -8,7 +8,7 @@
                 
                 <div class="flex gap-2">
                     <PrimaryButton @click="router.visit(route('crews.create'))"><PhPlus weight="bold" size="16" class="mr-2"/>Create</PrimaryButton>
-                    <PrimaryButton color="night" @click="router.visit(route('crews.create'))"><PhMicrosoftExcelLogo weight="bold" size="16" class="mr-2"/>Excel</PrimaryButton>
+                    <PrimaryButton color="green" @click="router.visit(route('crews.create'))"><PhMicrosoftExcelLogo weight="bold" size="16" class="mr-2"/>Excel</PrimaryButton>
                 </div>
             </div>
         </template>

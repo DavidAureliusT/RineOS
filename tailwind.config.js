@@ -22,10 +22,10 @@ export default {
                 xl: '1300px',
               },
             colors: {
-                'accent'    : '#FF0000',
+                'accent'    : '#ff1818',
                 'danger'    : '#7B1010',
                 'warning'   : '#FFDB0C',
-                'success'   : '#3CE037',
+                'success'   : '#07c400',
                 'primary'   : '#F0F0F0',
                 'night'     : '#111827'
               },
