@@ -40,8 +40,8 @@
                             />
                 </div>
             </div>
-            <div class="overflow-auto">
-                <div class="mt-4 grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
+            <div class="">
+                <div class="mt-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
                     <Crew
                         v-for="crew in crews"
                         :key="crew.id"
@@ -73,9 +73,9 @@ const props = defineProps({
 })
 
 const _search = reactive({
-    'name' : props.search?.name,
-    'role' : props.search?.role,
-    'vessel' : props.search?.vessel,
+    name : props.search?.name,
+    role : props.search?.role,
+    vessel : props.search?.vessel,
 })
 
 let typingTimer;

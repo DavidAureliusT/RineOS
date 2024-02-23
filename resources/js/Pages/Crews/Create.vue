@@ -10,12 +10,12 @@
             <form @submit.prevent="form.post(route('crews.store'), { onSuccess: () => form.reset() })">
                 <div class="flex flex-wrap gap-4">
                     <div v-for="[key, _] of Object.entries(crew_schema)" class="flex-grow basis-1/5">
-                        <InputLabel :for="key" :value="key" class="text-black" />
+                        <InputLabel :for="key" :value="key" color="night" />
     
                         <TextInput
                             :id="key"
                             type="text"
-                            class="mt-1 block w-full text-black"
+                            class="mt-1 block w-full"
                             v-model="form[key]"
                             required
                             autofocus
