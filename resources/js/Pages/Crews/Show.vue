@@ -30,52 +30,7 @@
                                     <h3 class="text-lg font-bold text-gray-500 mb-4">Documents</h3>
                                 </div>
                                 <div>
-                                    <Dialog 
-                                        dialog-title="Upload Document"
-                                        dialog-description="Upload documents and set reminders to update. Click save when you're done."
-                                    >
-                                        <template #trigger-button>
-                                            <PrimaryButton class="mb-4">Upload</PrimaryButton>
-                                        </template>
-                                        <form @submit.prevent="upload_document" >
-                                            <fieldset class="mb-[15px] flex items-center gap-5">
-                                                <label class="w-[90px] text-right text-[15px]" for="file">File</label>
-                                                <input 
-                                                    @input="document_form.file = $event.target.files[0]"
-                                                    type="file" 
-                                                    id="file"
-                                                    class="inline-flex  w-full flex-1 leading-none outline-none"
-                                                >
-                                                <InputError :message="document_form.errors['file']" class="mt-2" />
-                                            </fieldset>
-                                            <fieldset class="mb-[15px] flex items-center gap-5">
-                                                <label class="w-[90px] text-right text-[15px]" for="name">Name</label>
-                                                <input
-                                                    v-model="document_form.name"
-                                                    id="name"
-                                                    class="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] leading-none outline-none"
-                                                    placeholder="ex: Curriculum vitae"
-                                                >
-                                                <InputError :message="document_form.errors['name']" class="mt-2" />
-                                            </fieldset>
-                                            <fieldset class="mb-[15px] flex items-center gap-5">
-                                                <label class="w-[90px] text-right text-[15px]" for="reminder">Reminders</label>
-                                                <input
-                                                    v-model="document_form.reminder"
-                                                    id="reminder"
-                                                    class="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] leading-none outline-none"
-                                                    type="date"
-                                                >
-                                                <InputError :message="document_form.errors['reminder']" class="mt-2" />
-                                            </fieldset>
-                                            <div class="mt-[25px] flex justify-end">
-                                                <PrimaryButton type="submit">Upload</PrimaryButton>
-                                            </div>
-                                            <progress v-if="document_form.progress" :value="document_form.progress.percentage" max="100">
-                                                {{ document_form.progress.percentage }}%
-                                            </progress>
-                                        </form>
-                                    </Dialog>
+                                    <UploadDocumentDialog :crew_id="crew.id" />
                                 </div>
                             </div>
                             <hr>
@@ -154,7 +109,7 @@ import { PhCaretRight } from "@phosphor-icons/vue";
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
-import Dialog from '@/Components/Dialog.vue';
+import UploadDocumentDialog from '@/Components/UploadDocumentDialog.vue';
 import Document from '@/Components/Document.vue';
 
 import dayjs from 'dayjs';

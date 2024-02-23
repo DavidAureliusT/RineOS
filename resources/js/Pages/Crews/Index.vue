@@ -21,9 +21,11 @@
                             
                             <div class="flex divide-x-2 text-center my-8 mb-3">
                                 <div class="flex-grow basis-1">
-                                    <SecondaryButton >
-                                        Download Template
-                                    </SecondaryButton>
+                                    <a :href="$page.props.app_url+'uploads/templates/input-multiple-crew-template.xlsx'">
+                                        <SecondaryButton>
+                                            Download Template
+                                        </SecondaryButton>
+                                    </a>
                                 </div>
                                 <div class="flex-grow basis-1">
                                     <PrimaryButton color="green">

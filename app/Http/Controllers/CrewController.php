@@ -17,9 +17,6 @@ class CrewController extends Controller
      */
     public function index()
     {
-        // if(request()->input('search')){
-        //     dd(request()->input('search.name'));
-        // }
         return Inertia::render('Crews/Index', [
             'search' => request()->input('search'),
             'crews' => Crew::when(request()->input('search.name'), function ($query, $name) {
@@ -140,6 +137,14 @@ class CrewController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Crew $crew)
+    {
+        //
+    }
+
+    /**
+     * Download input-multiple-crew-template.xlsx
+     */
+    public function download_template()
     {
         //
     }

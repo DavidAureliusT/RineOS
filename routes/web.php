@@ -36,6 +36,10 @@ Route::resource('crews', CrewController::class)
     ->only(['index', 'create', 'store', 'show', 'update'])
     ->middleware(['auth', 'verified']);
 
+Route::controller(CrewController::class)->group( function () {
+    Route::get('crews/download-template', 'download_template')->name('crews.download_template');
+})->middleware(['auth', 'verified']);
+
 Route::resource('contracts', ContractController::class)
     ->only(['index', 'create', 'store', 'show', 'update'])
     ->middleware(['auth', 'verified']);
@@ -44,7 +48,7 @@ Route::controller(DocumentController::class)->group( function () {
     Route::post('crews/{crew}/documents', 'store')->name('documents.store');
     Route::put('documents/{document}', 'update')->name('documents.update');
     Route::delete('documents/{document}', 'destroy')->name('documents.destroy');
-});
+})->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
