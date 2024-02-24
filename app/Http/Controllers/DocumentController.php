@@ -6,6 +6,7 @@ use App\Models\Crew;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
@@ -50,6 +51,9 @@ class DocumentController extends Controller
             'reminder' => $request->input('reminder'),
         ]);
 
+        Session::flash('alert-class', 'success'); 
+        Session::flash('message', 'Document created successfully.'); 
+
         return redirect()->back();
     }
 
@@ -83,6 +87,9 @@ class DocumentController extends Controller
             'reminder' => $request->input('reminder'),
         ]);
 
+        Session::flash('alert-class', 'success'); 
+        Session::flash('message', 'Document updated successfully.'); 
+
         return redirect()->back();
     }
 
@@ -98,6 +105,9 @@ class DocumentController extends Controller
         if(File::exists($document->url)) {
             File::delete($document->url);
         }
+
+        Session::flash('alert-class', 'success'); 
+        Session::flash('message', 'Document deleted successfully.'); 
 
         return redirect()->back();
     }

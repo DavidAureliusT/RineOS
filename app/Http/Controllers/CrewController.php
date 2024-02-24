@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Crew;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -19,8 +20,8 @@ class CrewController extends Controller
     public function index()
     {
         return Inertia::render('Crews/Index', [
-            'search' => request()->input('search'),
-            'crews' => Crew::when(request()->input('search.name'), function ($query, $name) {
+            'search'    => request()->input('search'),
+            'crews'     => Crew::when(request()->input('search.name'), function ($query, $name) {
                                 $query->where('name', 'like', '%'.$name.'%');
                             })
                             ->when(request()->input('search.role'), function ($query, $role) {
@@ -38,9 +39,7 @@ class CrewController extends Controller
      */
     public function create()
     {   
-        return Inertia::render('Crews/Create', [
-            //
-        ]);
+        return Inertia::render('Crews/Create');
     }
 
     /**
@@ -75,6 +74,9 @@ class CrewController extends Controller
  
         $request->user()->crews()->create($validated);
  
+        Session::flash('alert-class', 'success'); 
+        Session::flash('message', 'Crew created successfully.'); 
+
         return redirect(route('crews.index'));
     }
 
@@ -130,6 +132,9 @@ class CrewController extends Controller
         ]);
  
         $crew->update($validated);
+
+        Session::flash('alert-class', 'success'); 
+        Session::flash('message', 'Crew updated successfully.'); 
  
         return redirect()->back();
     }
@@ -139,13 +144,18 @@ class CrewController extends Controller
      */
     public function destroy(Crew $crew)
     {
+        
         foreach($crew->documents() as $document) {
+            dd($document->url);
             if(File::exists($document->url)) {
                 File::delete($document->url);
             }
             $document->delete();
         }
         $crew->delete();
+
+        Session::flash('alert-class', 'success'); 
+        Session::flash('message', 'Crew deleted successfully.'); 
 
         return redirect(route('crews.index'));
     }
