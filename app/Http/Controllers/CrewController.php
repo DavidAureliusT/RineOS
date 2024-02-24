@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Crew;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -138,7 +139,15 @@ class CrewController extends Controller
      */
     public function destroy(Crew $crew)
     {
-        //
+        foreach($crew->documents() as $document) {
+            if(File::exists($document->url)) {
+                File::delete($document->url);
+            }
+            $document->delete();
+        }
+        $crew->delete();
+
+        return redirect(route('crews.index'));
     }
 
     /**
