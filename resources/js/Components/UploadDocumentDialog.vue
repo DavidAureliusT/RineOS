@@ -45,7 +45,7 @@ const isOpen = ref(false)
 <template>
     <DialogRoot v-model:open="isOpen">
         <DialogTrigger>
-            <PrimaryButton class="mb-4">Upload</PrimaryButton>
+            <slot name="trigger" />
         </DialogTrigger>
         <DialogPortal>
             <DialogOverlay class="bg-black/25 data-[state=open]:animate-overlayShow fixed inset-0 z-30" />
@@ -85,12 +85,12 @@ const isOpen = ref(false)
                     </fieldset>
                     <fieldset class="mb-[15px] flex items-start gap-5">
                         <label class="w-[90px] text-right text-[15px] pt-1.5" for="reminder">Reminders</label>
-                        <input
+                        <TextInput
                             v-model="document_form.reminder"
                             id="reminder"
                             class="inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] leading-none outline-none"
                             type="date"
-                        >
+                        />
                         <InputError :message="document_form.errors.reminder" class="mt-2" />
                     </fieldset>
                     <div class="mt-[25px] flex justify-end">
