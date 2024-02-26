@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('crew_id')->constrained()->cascadeOnDelete();
             $table->string('url');
             $table->string('name');
+            $table->date('desc')->nullable();
             $table->date('reminder')->nullable();
             $table->timestamps();
         });

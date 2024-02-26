@@ -36,10 +36,6 @@ Route::resource('crews', CrewController::class)
     ->only(['index', 'create', 'store', 'show', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
-Route::controller(CrewController::class)->group( function () {
-    Route::get('crews/download-template', 'download_template')->name('crews.download_template');
-})->middleware(['auth', 'verified']);
-
 Route::resource('contracts', ContractController::class)
     ->only(['index', 'create', 'store', 'show', 'update'])
     ->middleware(['auth', 'verified']);

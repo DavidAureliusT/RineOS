@@ -35,22 +35,27 @@
                     </div>
                     <div class="flex-1">
                         <div>
-                            <CrewProfileCard class="" :crew="crew" />
+                            <CrewContractCard class="" :crew="crew" />
+                        </div>
+                        <hr class="my-8">
+                        <div>
+                            <CrewProfileCard class="mt-4" :crew="crew" />
                         </div>
                         <div>
                             <CrewDocumentsCard class="mt-4" :crew="crew" />
                         </div>
-                        <hr class="my-8">
+                        <!-- <hr class="my-8">
                         <div>
                             <CrewDangerZoneCard class="mt-4" :crew="crew" />
-                        </div>
+                        </div> -->
                     </div>
                     <div class="flex-none w-60 flex flex-col">
                         <div class="flex flex-col">
                             <p class="font-semibold text-gray-800 mb-1">On this page</p>
+                            <a class="pl-3 py-1 border-l-2 font-semibold border-gray-400 text-gray-400 hover:border-accent hover:text-accent cursor-default">Current Contract</a>
+                            <a class="pl-3 py-1 border-l-2 font-semibold border-gray-400 text-gray-400 hover:border-accent hover:text-accent cursor-default">Experience</a>
                             <a href="#PROFILE" class="pl-3 py-1 border-l-2 font-semibold border-gray-400 text-gray-400 hover:border-accent hover:text-accent cursor-default">Profile</a>
                             <a href="#DOCUMENTS" class="pl-3 py-1 border-l-2 font-semibold border-gray-400 text-gray-400 hover:border-accent hover:text-accent cursor-default">Document</a>
-                            <a class="pl-3 py-1 border-l-2 font-semibold border-gray-400 text-gray-400 hover:border-accent hover:text-accent cursor-default">Experience</a>
                             <a class="pl-3 py-1 border-l-2 font-semibold border-gray-400 text-gray-400 hover:border-accent hover:text-accent cursor-default">Discussion</a>
                         </div>
                     </div>
@@ -70,6 +75,7 @@ import { PhCaretRight } from "@phosphor-icons/vue";
 
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 
+import CrewContractCard from '@/Components/CrewContractCard.vue';
 import CrewProfileCard from '@/Components/CrewProfileCard.vue';
 import CrewDocumentsCard from '@/Components/CrewDocumentsCard.vue';
 import CrewDangerZoneCard from '@/Components/CrewDangerZoneCard.vue';
