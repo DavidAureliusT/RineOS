@@ -1,31 +1,31 @@
 <template>
-    <div id="PROFILE" class="bg-white py-5 rounded-lg border ">
+    <div id="LATEST_CONTRACT" class="bg-white py-5 rounded-lg border ">
         <div class="flex justify-between items-start pr-4 h-14">
-            <p class="px-8 bg-night text-white font-semibold text-sm py-1">Current Contract</p>
+            <p class="px-8 bg-night text-white font-semibold text-sm py-1">Latest Contract</p>
             <PrimaryButton @click="editing = !editing" class="mb-4 w-24">{{ !editing ? 'Update' : 'Cancel' }}</PrimaryButton>
         </div>
         <div class="px-4">
             <div class="flex gap-4">
                 <div class="flex-none relative w-48 aspect-square flex justify-center items-center bg-primary rounded-lg">
                     <PhBoat size="56" weight="duotone" />
-                    <!-- <p class="absolute bottom-3 font-bold">{{ contract.vessel }}</p> -->
+                    <!-- <p class="absolute bottom-3 font-bold">{{ crew.contracts[0].vessel }}</p> -->
                 </div>
                 <div class="flex-1 relative">
-                    <p class="font-mono text-sm py-2 leading-none">{{ contract.code }}</p>
-                    <p class="text-3xl font-bold leading-none">{{ contract.rank }}</p>
-                    <p class="text-sm">{{ contract.vessel }}</p>
+                    <p class="font-mono text-sm py-2 leading-none">{{ crew.contracts[0].code }}</p>
+                    <p class="text-3xl font-bold leading-none">{{ crew.contracts[0].rank }}</p>
+                    <p class="text-sm">{{ crew.contracts[0].vessel }}</p>
                     <div 
                     class="font-bold tracking-widest w-fit px-3 py-1 text-white uppercase text-xs mt-2 animate-pulse"
                     :class="[
-                        contract.status == 'expired' ? 'bg-night' : '',
-                        contract.status == 'active' ? 'bg-accent' : ''
+                        crew.contracts[0].status == 'expired' ? 'bg-night' : '',
+                        crew.contracts[0].status == 'active' ? 'bg-accent' : ''
                     ]">
-                        <p>{{ contract.status }}</p>
+                        <p>{{ crew.contracts[0].status }}</p>
                     </div>
                     <div class="absolute bottom-0 inset-x-0">
                         <div class="flex justify-between text-xs">
-                            <p>{{ contract.start }}</p>
-                            <p>{{ contract.end }}</p>
+                            <p>{{ crew.contracts[0].start_date }}</p>
+                            <p>{{ crew.contracts[0].end_date }}</p>
                         </div>
                         <div class="mt-2">
                             <ProgressRoot
@@ -71,15 +71,6 @@ import { PhBoat } from "@phosphor-icons/vue";
 const props = defineProps({
     'crew' : Object
 })
-
-const contract =  {
-        code : '121/CRW-ENL-PKL/III/2023',
-        vessel : 'EN3000',
-        rank : 'Barge Master',
-        start : '18 Mar 2022',
-        end : '17 Sep 2022',
-        status : 'expired',
-    }
 
 const _schema = {
     

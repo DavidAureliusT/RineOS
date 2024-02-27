@@ -18,10 +18,11 @@ class ContractsImport implements ToModel, WithHeadingRow
     {
         return new Contract([
             "crew_id" => $row['crew_id'],
+            "code" => $row['contract_code'],
             "vessel" => $row['vessel'],
             "rank" => $row['rank'],
-            "start_date" => $row['start_date'],
-            "end_date" => $row['end_date'],
+            "start_date" => $row['start_date_formated'],
+            "end_date" => $row['end_date_formated'],
             "status" => 'expired',
             'user_id' => 1,
             'created_at' => now()

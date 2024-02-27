@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('crew_id')->constrained()->cascadeOnDelete();
             $table->foreignId('document_id')->nullable()->constrained()->nullOnDelete();
+            $table->string('code');
             $table->string('vessel');
             $table->string('rank');
             $table->date('start_date');

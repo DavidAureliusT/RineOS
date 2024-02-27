@@ -30,7 +30,7 @@ class CrewsImport implements ToModel, WithHeadingRow
             "blood_type" => $row['blood_type'],
             "email" => $row['email'],
             "birthplace" => $row['birthplace'],
-            "birthdate" => $row['birthdate'],
+            "birthdate" => $row['birthdate_formated'],
             "bank" => $row['bank'],
             "bank_account_number" => $row['bank_account_number'],
             "bank_account_owner" => $row['bank_account_owner'],

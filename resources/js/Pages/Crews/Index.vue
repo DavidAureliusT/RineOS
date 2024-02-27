@@ -6,7 +6,7 @@
             <div class="flex justify-between w-full">
                 <h2 class="font-semibold text-md text-gray-800 leading-tight inline-flex items-center">Crews</h2>
                 <div class="flex gap-2">
-                    <PrimaryButton @click="router.visit(route('crews.create'))"><PhPlus weight="bold" size="16" class="mr-2"/>Create</PrimaryButton>
+                    <PrimaryButton color="black" @click="router.visit(route('crews.create'))"><PhPlus weight="bold" size="16" class="mr-2"/>Create</PrimaryButton>
                     
                     <div>
                         <Dialog 

@@ -30,7 +30,7 @@ class CrewController extends Controller
                             ->when(request()->input('search.vessel'), function ($query, $vessel) {
                                 $query->where('vessel', 'like', '%'.$vessel.'%');
                             })
-                            ->with('user:id,name')->latest()->get(),
+                            ->with(['user:id,name', 'contracts'])->latest()->get(),
         ]);
     }
 
@@ -86,7 +86,7 @@ class CrewController extends Controller
     public function show(Crew $crew)
     {
         return Inertia::render('Crews/Show', [
-            'crew' => Crew::with(['user:id,name', 'documents'])->find($crew->id),
+            'crew' => Crew::with(['user:id,name', 'documents', 'contracts'])->find($crew->id),
         ]);
     }
 
