@@ -35,7 +35,7 @@
                     </div>
                     <div class="flex-1">
                         <div>
-                            <CrewContractCard class="" :crew="crew" />
+                            <CrewContractCard :crew="crew" />
                         </div>
                         <hr class="my-8">
                         <div>

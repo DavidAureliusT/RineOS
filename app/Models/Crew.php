@@ -24,4 +24,9 @@ class Crew extends Model
     {
         return $this->HasMany(Document::class);
     }
+
+    public function contracts(): HasMany
+    {
+        return $this->HasMany(Contract::class);
+    }
 }
