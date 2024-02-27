@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('crews', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            $table->string("ktp");
+            $table->string("nik");
             $table->string('name');
-            $table->string("role");
-            $table->string("vessel");
+            $table->string('rank');
+            $table->string('vessel');
             $table->string("birthplace");
             $table->date("birthdate");
             $table->string("religion");

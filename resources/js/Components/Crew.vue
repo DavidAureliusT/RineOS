@@ -21,12 +21,12 @@ defineProps(['crew', 'url']);
                 <div class="flex flex-col items-start">
                     <div class="p-3 border rounded-full">
                         <!-- <PhUser size="30" weight="thin"/> -->
-                        {{ crew.name[0] }}{{ crew.name[1] }}
+                        {{ crew.id }}
                     </div>
                     <p class="text-lg font-semibold absolute top-40 left-3">{{ crew.name }}</p>
                     <p class="text-xs text-center rounded-bl-md absolute top-0 right-0 uppercase bg-night/80 text-white px-2 py-0.5">expired</p>
                     <!-- <p class="text-xs text-center rounded-bl-md absolute top-0 right-0 uppercase bg-success text-white px-2 py-0.5 ">appr</p> -->
-                    <p class="text-xs text-center absolute top-2 left-3">{{ crew.role }}</p>
+                    <p class="text-xs text-center absolute top-2 left-3">{{ crew.rank }}</p>
                     <p class="text-xs text-center absolute bottom-2 right-3">{{ crew.vessel }}</p>
                 </div>
             </div>

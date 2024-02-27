@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('document_id')->nullable()->constrained()->nullOnDelete();
             $table->string('vessel');
             $table->string('rank');
-            $table->date('start_at');
-            $table->date('end_at');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->string('status');
             
             $table->timestamps();

@@ -42,9 +42,9 @@ const props = defineProps({
 })
 
 const crew_schema = {
-    ktp: props.crew.ktp ?? '',
+    nik: props.crew.nik ?? '',
     name: props.crew.name ?? '',
-    role: props.crew.role ?? '',
+    rank: props.crew.rank ?? '',
     vessel: props.crew.vessel ?? '',
     birthplace: props.crew.birthplace ?? '',
     birthdate: props.crew.birthdate ?? '',
