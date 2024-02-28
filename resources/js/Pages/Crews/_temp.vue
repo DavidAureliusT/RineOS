@@ -120,7 +120,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 
 const props = defineProps({
-    'crew': Object
+    crew :Object
 })
 
 const crew_schema = {

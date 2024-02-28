@@ -24,8 +24,8 @@ class CrewController extends Controller
             'crews'     => Crew::when(request()->input('search.name'), function ($query, $name) {
                                 $query->where('name', 'like', '%'.$name.'%');
                             })
-                            ->when(request()->input('search.role'), function ($query, $role) {
-                                $query->where('role', 'like', '%'.$role.'%');
+                            ->when(request()->input('search.rank'), function ($query, $rank) {
+                                $query->where('rank', 'like', '%'.$rank.'%');
                             })
                             ->when(request()->input('search.vessel'), function ($query, $vessel) {
                                 $query->where('vessel', 'like', '%'.$vessel.'%');
@@ -51,7 +51,7 @@ class CrewController extends Controller
             'ktp' => 'required|unique:crews|max:255',
             'name' => 'required|max:255',
             'birthplace' => 'required|max:255',
-            'role' => 'required|max:255',
+            'rank' => 'required|max:255',
             'vessel' => 'required|max:255',
             'birthdate' => 'required|date',
             'religion' => 'required|max:255',
@@ -109,7 +109,7 @@ class CrewController extends Controller
                 Rule::unique('crews')->ignore($crew->id, 'id')
             ],
             'name' => 'required|max:255',
-            'role' => 'required|max:255',
+            'rank' => 'required|max:255',
             'vessel' => 'required|max:255',
             'birthplace' => 'required|max:255',
             'birthdate' => 'required|date',

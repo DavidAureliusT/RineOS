@@ -9,7 +9,7 @@
                     Crews
                 </Link>
                 <PhCaretRight/> 
-                <span class="text-gray-800">{{ crew.name }}</span>
+                <span class="text-gray-800 font-mono">{{ crew.name }}</span>
             </div>
         </template>
 
@@ -18,18 +18,8 @@
         flex gap-8">
             <div class="flex-none w-60 relative">
                 <div class="fixed w-60">
-                    <p class="font-bold text-3xl text-night">{{ crew.name }}</p>
-                    <div id="PHOTO_PROFILE" class="mt-4">
-                        <p class="font-bold text-sm uppercase">Photo Profile</p>
-                        <div class="mt-3 flex items-center gap-4">
-                            <div class="w-full flex flex-col place-items-center">
-                                <div class="p-3 bg-white border rounded-lg w-full aspect-square grid place-items-center">
-                                    <h1 class="text-3xl">{{ crew.name[0] }}</h1>
-                                </div>
-                                <SecondaryButton class="mt-3 w-full" disabled>Edit Picture</SecondaryButton>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="font-bold text-3xl text-night font-mono">{{ crew.name }}</p>
+                    <CrewPhotoProfile :crew="crew" class="mt-4" />
                 </div>
                 
             </div>
@@ -76,6 +66,7 @@ import { PhCaretRight } from "@phosphor-icons/vue";
 
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 
+import CrewPhotoProfile from '@/Components/CrewPhotoProfile.vue';
 import CrewLatestContractCard from '@/Components/CrewLatestContractCard.vue';
 import CrewExperiencesCard from '@/Components/CrewExperiencesCard.vue';
 import CrewProfileCard from '@/Components/CrewProfileCard.vue';
@@ -88,7 +79,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 
 const props = defineProps({
-    'crew': Object
+    crew :Object
 })
 
 const document_form = useForm({

@@ -8,7 +8,6 @@
                 </template>
             </UploadDocumentDialog>
         </div>
-
         <div>
             <div v-if="crew.documents.length" class="mt-4 divide-y">
                 <div class="flex items-center text-black/50 font-bold h-[35px] p-3">
@@ -35,19 +34,14 @@
             </div>
             <p v-else class="px-4 text-gray-500 text-right animate-pulse">No Document</p>
         </div>
-
     </div>
 </template>
 
 <script setup>
-
-defineProps({
-    'crew' : Object
-})
-
 import UploadDocumentDialog from '@/Components/UploadDocumentDialog.vue';
 import Document from '@/Components/Document.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-
-
+defineProps({
+    crew :Object
+})
 </script>

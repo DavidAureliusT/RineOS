@@ -6,14 +6,13 @@
             <div class="flex justify-between w-full">
                 <p class="font-semibold text-gray-800 leading-tight inline-flex items-center">Crews</p>
                 <div class="flex gap-2">
-                    <PrimaryButton color="black" @click="router.visit(route('crews.create'))"><PhPlus weight="bold" size="16" class="mr-2"/>Create</PrimaryButton>
                     <div>
                         <Dialog 
                             dialog-title="Excel"
                             dialog-description="Insert crew data using excel file."
                         >
                             <template #trigger-button>
-                                <PrimaryButton color="green"><PhMicrosoftExcelLogo weight="bold" size="16" class="mr-2"/>Excel</PrimaryButton>
+                                <SecondaryButton><PhMicrosoftExcelLogo weight="bold" size="16" class="mr-2"/>Excel</SecondaryButton>
                             </template>
                             
                             <div class="flex divide-x-2 text-center my-8 mb-3">
@@ -32,6 +31,9 @@
                             </div>
                         </Dialog>
                     </div>
+                    <div>
+                        <PrimaryButton color="black" @click="router.visit(route('crews.create'))"><PhPlus weight="bold" size="16" class="mr-2"/>Create</PrimaryButton>
+                    </div>
                 </div>
             </div>
         </template>
@@ -40,7 +42,7 @@
             <div class="flex gap-2 flex-wrap">
                 <div class="flex-grow flex items-center relative">
                     <PhTextAa class="absolute left-3"/>
-                    <TextInput v-model="_search.name"
+                    <TextInput v-model="_query.name"
                                 type="text"
                                 placeholder="Cari siapa?"
                                 class="border-slate-300 transition-all pl-10 w-full bg-white text-black"
@@ -48,7 +50,7 @@
                 </div>
                 <div class="flex-grow flex items-center relative">
                     <PhIdentificationBadge class="absolute left-3"/>
-                    <TextInput v-model="_search.role"
+                    <TextInput v-model="_query.rank"
                                 type="text"
                                 placeholder="Cari posisi apa?"
                                 class="border-slate-300 transition-all pl-10 w-full bg-white text-black"
@@ -56,7 +58,7 @@
                 </div>
                 <div class="flex-grow flex items-center relative">
                     <PhAnchor class="absolute left-3"/>
-                    <TextInput v-model="_search.vessel"
+                    <TextInput v-model="_query.vessel"
                                 type="text"
                                 placeholder="Cari untuk kapal apa?"
                                 class="border-slate-300 transition-all pl-10 w-full bg-white text-black"
@@ -64,7 +66,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="mt-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
+                <div class="mt-4 grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
                     <Crew
                         v-for="crew in crews"
                         :key="crew.id"
@@ -90,37 +92,48 @@ import Crew from '@/Components/Crew.vue';
 import { PhTextAa, PhAnchor, PhIdentificationBadge, PhMicrosoftExcelLogo, PhPlus } from "@phosphor-icons/vue";
 
 import { Head, router } from '@inertiajs/vue3';
-import { reactive, watch } from 'vue';
+import { onMounted, reactive, watch } from 'vue';
 
 const props = defineProps({
-    'crews': Object,
-    'search': Object,
+    crews :Object,
+    search: Object,
 })
 
-const _search = reactive({
-    name : props.search?.name,
-    role : props.search?.role,
-    vessel : props.search?.vessel,
+const _syncronize_query = () => {
+    _query.name = props.search.name ?? ''
+    _query.rank = props.search.rank ?? ''
+    _query.vessel = props.search.vessel ?? ''
+}
+
+onMounted(() => {
+    // console.log(`OnMounted | prop.search -> ${props.search != undefined}`)
+    if(props.search != undefined) _syncronize_query()
+})
+
+
+const _query = reactive({
+    name : '',
+    rank : '',
+    vessel : '',
 })
 
 let typingTimer;
 let doneTypingInterval = 1000;
 
 watch(
-    () => [ _search.name, _search.role, _search.vessel ],
+    () => [ _query.name, _query.rank, _query.vessel ],
     () => {
         clearTimeout(typingTimer)
         typingTimer = setTimeout(() => {
             router.visit('/crews',{
                 method: 'get',
                 data: {
-                    search: _search,
+                    search: _query,
                 },
                 only: ['crews', 'search'],
                 preserveState: true,
                 replace: true,
             })
-            
         },doneTypingInterval)
     })
 

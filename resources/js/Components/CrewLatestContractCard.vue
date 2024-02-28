@@ -69,7 +69,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { PhBoat } from "@phosphor-icons/vue";
 
 const props = defineProps({
-    'crew' : Object
+    crew :Object
 })
 
 const _schema = {

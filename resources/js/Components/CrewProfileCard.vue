@@ -38,7 +38,7 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
 const props = defineProps({
-    'crew' : Object
+    crew :Object
 })
 
 const crew_schema = {

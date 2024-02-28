@@ -23,7 +23,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import DeleteCrewDialog from '@/Components/DeleteCrewDialog.vue';
 
 const props = defineProps({
-    'crew' : Object
+    crew :Object
 })
 
 </script>

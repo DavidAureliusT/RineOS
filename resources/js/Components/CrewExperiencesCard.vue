@@ -36,7 +36,7 @@
 <script setup>
 
 const props = defineProps({
-    'crew' : Object
+    crew :Object
 })
 
 </script>
