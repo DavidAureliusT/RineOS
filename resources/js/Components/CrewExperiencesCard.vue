@@ -1,7 +1,7 @@
 <template>
-    <div id="EXPERIENCES" class="bg-white py-5 rounded-lg border ">
+    <div id="EXPERIENCES" class="bg-white py-5 rounded-lg border scroll-mt-40">
         <div class="flex justify-between items-start pr-4 h-14">
-            <p class="px-8 bg-night text-white font-semibold text-sm py-1">Experiences</p>
+            <a href="#EXPERIENCES" class="px-8 bg-night text-white font-semibold text-sm py-1">Experiences</a>
         </div>
         <div class="flex flex-col gap-3 divide-y border-y">
             <div v-for="(contract, index) in crew.contracts" :key="index" class="p-4">

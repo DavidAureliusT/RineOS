@@ -1,7 +1,7 @@
 <template>
-    <div id="PROFILE" class="bg-white py-5 rounded-lg border ">
+    <div id="PROFILE" class="bg-white py-5 rounded-lg border scroll-mt-40">
         <div class="flex justify-between items-start pr-4 h-14">
-            <p class="px-8 bg-night text-white font-semibold text-sm py-1">Profile</p>
+            <a href="#PROFILE" class="px-8 bg-night text-white font-semibold text-sm py-1">Profile</a>
             <PrimaryButton @click="editing = !editing" class="mb-4 w-24">{{ !editing ? 'Edit' : 'Cancel' }}</PrimaryButton>
         </div>
         <form class="px-4" @submit.prevent="form.put(route('crews.update', crew.id), { onSuccess: () => editing = false })">

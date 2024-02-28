@@ -13,8 +13,8 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <div>
-        <div class="min-h-screen bg-gray-50">
+    <div class="min-h-screen ">
+        <div class="fixed top-0 inset-x-0 z-10">
             <nav class="bg-night border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,7 +28,7 @@ const showingNavigationDropdown = ref(false);
                                     />
                                 </Link>
                             </div>
-
+    
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('crews.index')" :active="route().current('crews.*')">
@@ -42,7 +42,7 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
                             </div>
                         </div>
-
+    
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
                             <!-- Settings Dropdown -->
                             <div class="ms-3 relative">
@@ -54,7 +54,7 @@ const showingNavigationDropdown = ref(false);
                                                 class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-100 focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {{ $page.props.auth.user.name }}
-
+    
                                                 <svg
                                                     class="ms-2 -me-0.5 h-4 w-4"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ const showingNavigationDropdown = ref(false);
                                             </button>
                                         </span>
                                     </template>
-
+    
                                     <template #content>
                                         <DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
                                         <DropdownLink :href="route('logout')" method="post" as="button">
@@ -80,7 +80,7 @@ const showingNavigationDropdown = ref(false);
                                 </Dropdown>
                             </div>
                         </div>
-
+    
                         <!-- Hamburger -->
                         <div class="-me-2 flex items-center sm:hidden">
                             <button
@@ -113,7 +113,7 @@ const showingNavigationDropdown = ref(false);
                         </div>
                     </div>
                 </div>
-
+    
                 <!-- Responsive Navigation Menu -->
                 <div
                     :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
@@ -130,7 +130,7 @@ const showingNavigationDropdown = ref(false);
                             Projects
                         </ResponsiveNavLink>
                     </div>
-
+    
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
                         <div class="px-4">
@@ -139,7 +139,7 @@ const showingNavigationDropdown = ref(false);
                             </div>
                             <div class="font-medium text-sm text-gray-400">{{ $page.props.auth.user.email }}</div>
                         </div>
-
+    
                         <div class="mt-3 space-y-1">
                             <ResponsiveNavLink :href="route('profile.edit')"> Profile </ResponsiveNavLink>
                             <ResponsiveNavLink :href="route('logout')" method="post" as="button">
@@ -149,21 +149,22 @@ const showingNavigationDropdown = ref(false);
                     </div>
                 </div>
             </nav>
-
             <!-- Page Heading -->
-            <header class="bg-primary shadow h-16" v-if="$slots.header">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full grid place-items-center">
+            <header class="backdrop-blur-sm bg-primary/90 shadow-lg h-16" v-if="$slots.header">
+                <div class="max-w-7xl mx-auto px-4 
+                sm:px-6 lg:px-8 h-full 
+                grid place-items-center">
                     <slot name="header" />
                 </div>
             </header>
-
-            <!-- Alert -->
-            <Alert />
-
-            <!-- Page Content -->
-            <main>
-                <slot />
-            </main>
         </div>
+
+        <!-- Alert -->
+        <Alert />
+        
+        <!-- Page Content -->
+        <main class="mt-32">
+            <slot />
+        </main>
     </div>
 </template>
