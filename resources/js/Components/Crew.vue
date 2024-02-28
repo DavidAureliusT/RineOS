@@ -21,7 +21,7 @@ defineProps(['crew', 'url']);
                 <div class="flex flex-col items-start">
                     <div class="p-3 border rounded-full">
                         <!-- <PhUser size="30" weight="thin"/> -->
-                        {{ crew.contracts.length }}
+                        {{ crew.contracts.length }} Contracts
                     </div>
                     <p class="text-lg font-semibold absolute top-40 left-3">{{ crew.name }}</p>
                     <p class="text-xs text-center rounded-bl-md absolute top-0 right-0 uppercase bg-night/80 text-white px-2 py-0.5">expired</p>
