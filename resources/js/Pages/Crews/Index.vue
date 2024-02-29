@@ -42,7 +42,7 @@
         flex divide-x">
             <div class="flex-none w-60 relative ">
                 <div class="fixed w-60 pr-3">
-                    <p class="font-semibold text-gray-800 mb-1">Filter</p>
+                    <p class="font-semibold text-gray-800 mb-1 text-sm uppercase">Filter</p>
                     <div class="flex flex-col gap-2 mt-4">
                         <div class="flex items-center relative">
                             <PhTextAa class="absolute left-3"/>

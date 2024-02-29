@@ -150,7 +150,7 @@ const showingNavigationDropdown = ref(false);
                 </div>
             </nav>
             <!-- Page Heading -->
-            <header class="backdrop-blur-sm bg-primary/90 shadow-lg h-16" v-if="$slots.header">
+            <header class="backdrop-blur-sm bg-primary/50 shadow-lg h-16" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto px-4 
                 sm:px-6 lg:px-8 h-full 
                 grid place-items-center">

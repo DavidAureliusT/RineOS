@@ -17,7 +17,7 @@ defineProps(['crew', 'url']);
         <div class="h-[150px] rounded-lg bg-white text-night border border-black/20 shadow-md shadow-black/30 transition-all
          hover:shadow-transparent
          relative overflow-clip p-3">
-            <div v-html="crew.contracts[0].status" class="text-xs text-center rounded-bl-md absolute top-0 right-0 uppercase bg-night/80 text-white px-2 py-0.5"></div>
+            <div v-html="crew.contracts[0].status" class="text-xs text-center rounded-bl-md absolute top-0 right-0 uppercase bg-night/80 text-white px-2 py-0.5 animate-pulse"></div>
             <div class="
             absolute top-8 inset-x-0 px-3
             flex place-items-center gap-1">
