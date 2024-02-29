@@ -1,13 +1,13 @@
 <script setup>
 import {
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogOverlay,
-  DialogPortal,
-  DialogRoot,
-  DialogTitle,
-  DialogTrigger,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogOverlay,
+    DialogPortal,
+    DialogRoot,
+    DialogTitle,
+    DialogTrigger,
 } from 'radix-vue'
 
 import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -23,7 +23,7 @@ const props = defineProps({
 })
 
 const _form = useForm({
-    file: {},
+    photo: {},
 });
 
 function update_photo_profile() {
@@ -59,15 +59,15 @@ const isOpen = ref(false)
                 </DialogDescription>
                 <form @submit.prevent="update_photo_profile" >
                     <fieldset class="mb-[15px] flex items-start gap-5">
-                        <label class="w-[90px] text-right text-[15px] pt-1.5" for="file">File</label>
+                        <label class="w-[90px] text-right text-[15px] pt-1.5" for="photo">Photo</label>
                         <div class="flex-grow">
                             <input 
-                                @input="_form.file = $event.target.files[0]"
+                                @input="_form.photo = $event.target.files[0]"
                                 type="file" 
-                                id="file"
+                                id="photo"
                                 class="inline-flex  w-full flex-1 leading-none outline-none"
-                            >
-                            <InputError :message="_form.errors.file" class="mt-2" />
+                                accept="image/*">
+                            <InputError :message="_form.errors.photo" class="mt-2" />
                         </div>
                     </fieldset>
                     

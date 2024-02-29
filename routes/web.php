@@ -36,6 +36,10 @@ Route::resource('crews', CrewController::class)
     ->only(['index', 'create', 'store', 'show', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
+Route::post('crews/{crew}/photo_profile', [CrewController::class, 'upload_photo_profile'])
+    ->name('crews.upload_photo_profile')
+    ->middleware(['auth', 'verified']);
+
 Route::resource('contracts', ContractController::class)
     ->only(['index', 'create', 'store', 'show', 'update'])
     ->middleware(['auth', 'verified']);

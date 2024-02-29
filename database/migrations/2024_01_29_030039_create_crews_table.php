@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string("nik");
+            $table->string('photo_profile_url')->nullable();
             $table->string('name');
             $table->string('rank');
             $table->string('vessel');

@@ -38,35 +38,41 @@
             </div>
         </template>
 
-        <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-            <div class="flex gap-2 flex-wrap">
-                <div class="flex-grow flex items-center relative">
-                    <PhTextAa class="absolute left-3"/>
-                    <TextInput v-model="_query.name"
-                                type="text"
-                                placeholder="Cari siapa?"
-                                class="border-slate-300 transition-all pl-10 w-full bg-white text-black"
-                            />
-                </div>
-                <div class="flex-grow flex items-center relative">
-                    <PhIdentificationBadge class="absolute left-3"/>
-                    <TextInput v-model="_query.rank"
-                                type="text"
-                                placeholder="Cari posisi apa?"
-                                class="border-slate-300 transition-all pl-10 w-full bg-white text-black"
-                            />
-                </div>
-                <div class="flex-grow flex items-center relative">
-                    <PhAnchor class="absolute left-3"/>
-                    <TextInput v-model="_query.vessel"
-                                type="text"
-                                placeholder="Cari untuk kapal apa?"
-                                class="border-slate-300 transition-all pl-10 w-full bg-white text-black"
-                            />
+        <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8
+        flex divide-x">
+            <div class="flex-none w-60 relative ">
+                <div class="fixed w-60 pr-3">
+                    <p class="font-semibold text-gray-800 mb-1">Filter</p>
+                    <div class="flex flex-col gap-2 mt-4">
+                        <div class="flex items-center relative">
+                            <PhTextAa class="absolute left-3"/>
+                            <TextInput 
+                            v-model="_query.name"
+                            type="text"
+                            placeholder="Name"
+                            class="border-slate-300 transition-all pl-10 w-full bg-white text-black"/>
+                        </div>
+                        <hr class="my-1">
+                        <div class="flex items-center relative">
+                            <PhAnchor class="absolute left-3"/>
+                            <TextInput v-model="_query.vessel"
+                            type="text"
+                            placeholder="Vessel"
+                            class="border-slate-300 transition-all pl-10 w-full bg-white text-black"/>
+                        </div>
+                        <div class="flex items-center relative">
+                            <PhIdentificationBadge class="absolute left-3"/>
+                            <TextInput v-model="_query.rank"
+                            type="text"
+                            placeholder="Rank"
+                            class="border-slate-300 transition-all pl-10 w-full bg-white text-black"/>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="">
-                <div class="mt-4 grid xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
+            <div class="flex-1 relative pl-3">
+                <!-- Crews -->
+                <div class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 gap-4">
                     <Crew
                         v-for="crew in crews"
                         :key="crew.id"
@@ -75,6 +81,7 @@
                     />
                 </div>
             </div>
+            
         </div>
 
     </AuthenticatedLayout>

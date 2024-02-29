@@ -167,4 +167,34 @@ class CrewController extends Controller
     {
         //
     }
+
+    /**
+     * Upload Photo Profile
+     */
+    public function upload_photo_profile(Request $request, Crew $crew)
+    {
+        $this->validate($request, [
+			'photo' => 'required',
+		]);
+ 
+		$file = $request->file('photo');
+        $extension = $file->getClientOriginalExtension();
+        $filename = $crew->id.'-'.time().'.'.$extension;
+
+        $path = 'uploads/photo_profile/';
+        $file->move($path, $filename);
+
+        if(File::exists($crew->photo_profile_url)) {
+            File::delete($crew->photo_profile_url);
+        }
+
+        $crew->update([
+            'photo_profile_url' => $path.$filename,
+        ]);
+
+        Session::flash('alert-class', 'success'); 
+        Session::flash('message', 'Photo profile updated successfully.'); 
+
+        return redirect()->back();
+    }
 }

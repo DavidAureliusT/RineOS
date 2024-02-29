@@ -21,7 +21,6 @@
                     <p class="font-bold text-3xl text-night font-mono">{{ crew.name }}</p>
                     <CrewPhotoProfile :crew="crew" class="mt-4" />
                 </div>
-                
             </div>
             <div class="flex-1">
                 <div>
