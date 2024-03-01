@@ -26,6 +26,7 @@
                 <div>
                     <CrewLatestContractCard :crew="crew" />
                 </div>
+                <hr class="my-8">
                 <div>
                     <CrewExperiencesCard class="mt-4" :crew="crew" />
                 </div>

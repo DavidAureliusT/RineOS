@@ -33,8 +33,7 @@ defineProps(['crew', 'url']);
                     <p class="text-lg font-semibold font-mono leading-6">{{ crew.name }}</p>
                 </div>
             </div>
-            
-            <p class="text-sm text-center absolute bottom-2 left-3 font-semibold ">{{ crew.vessel }} &middot; {{ crew.rank }}</p>
+            <p class="text-sm text-center absolute bottom-2 left-3 font-semibold ">{{ crew.vessel }} &middot; {{ crew.rank }} &middot; ( {{ crew.contracts.length }} )</p>
         </div>
     </Link>
 </template>

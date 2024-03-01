@@ -2,7 +2,7 @@
     <div id="LATEST_CONTRACT" class="bg-white py-5 rounded-lg border scroll-mt-40 ">
         <div class="flex justify-between items-start pr-4 h-14">
             <a href="#LATEST_CONTRACT" class="px-8 bg-night text-white font-semibold text-sm py-1 ">Latest Contract</a>
-            <PrimaryButton @click="editing = !editing" class="mb-4 w-24">{{ !editing ? 'Update' : 'Cancel' }}</PrimaryButton>
+            <!-- <PrimaryButton @click="editing = !editing" class="mb-4 w-24">{{ !editing ? 'Update' : 'Cancel' }}</PrimaryButton> -->
         </div>
         <div class="px-4">
             <div class="flex gap-4">
